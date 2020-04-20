@@ -23,7 +23,7 @@ type MarkdownSuite struct {
 }
 
 func (m *MarkdownSuite) BeforeTest(suiteName, testName string) {
-	m.api = NewMarkdown()
+	m.api = NewMarkdown("./../static/markdown")
 	m.rec = httptest.NewRecorder()
 	m.ctx, _ = gin.CreateTestContext(m.rec)
 }

@@ -14,10 +14,11 @@ type MarkdownHandlerInterface interface {
 }
 
 type Markdown struct {
+	ResourcePath string
 }
 
-func NewMarkdown() *Markdown {
-	return &Markdown{}
+func NewMarkdown(resourcePath string) *Markdown {
+	return &Markdown{ResourcePath: resourcePath}
 }
 
 var files = []string{"article_1.md", "article_2.md", "article_3.md"}
@@ -43,7 +44,7 @@ func (m *Markdown) GetMarkdown(ctx *gin.Context) {
 }
 
 func (m *Markdown) filepath(filename string) string {
-	return strings.Join([]string{"./static/markdown", filename}, "/")
+	return strings.Join([]string{m.ResourcePath, filename}, "/")
 }
 
 func (m *Markdown) checkFileExists(filename string, files []string) bool {
