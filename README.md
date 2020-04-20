@@ -111,7 +111,7 @@ func (m *Markdown) checkFileExists(filename string, files []string) bool {
 }
 ```
 
-请注意，`NewMarkdown.filepath` 方法，指定文件路径为`./static/markdown`！
+请注意，`Markdown.filepath` 方法，指定文件路径为`./static/markdown`！
 
 > api/markdown_test.go具体代码如下所示：
 
@@ -397,7 +397,7 @@ $ tree
 
 示例项目简单使用了Gin框架、testify测试工具。其中static/markdown目录下静态资源文件内容依次是: `article 1`、`article 2`、`article 3`
 
-### 错误重现
+### [错误重现](https://github.com/wumoxi/hello-demo/tree/has_relative_problem)
 
 > main.go具体代码如下所示：
 
@@ -572,7 +572,7 @@ article 1
 
 通过CURL访问API接口正常，那么怎么来解决这个问题呢? 总结了一下有两种方式可以解决这个问题，第一种：传递资源路径；第二种：os.Getwd动态计算资源路径。
 
-### 第一种：传递资源路径
+### [第一种：传递资源路径](https://github.com/wumoxi/hello-demo/tree/fix/relative-for-transfer-resource-path)
 
 #### 修改api/markdown.go文件
 
@@ -662,7 +662,7 @@ article 2
 
 可以看到CURL访问API接口返回的资源内容为`article 2`, 关于测试相对路径与主程序相对路径访问资源的问题也就统一了，这个问题就通过传递资源路径的方式解决了，再来看另一种方式：os.Getwd动态计算资源路径。
 
-### 第二种：os.Getwd动态计算资源路径
+### [第二种：os.Getwd动态计算资源路径](https://github.com/wumoxi/hello-demo/tree/fix/relative-for-dynamic-calculation)
 
 Go内置包`os` 有一个函数`Getwd`，它返回当前运行程序所在路径，那有了这个路径是不是在判断一下当前运行程序所在目录是不是`api`目录，如果是就将目录访问到项目根目录这样岂不美哉，不错很好~
 
@@ -746,18 +746,9 @@ article 3
 
 可以看到CURL访问API接口返回的资源内容为`article 3`, 关于测试相对路径与主程序相对路径访问资源的问题也就统一了，这个问题就通过`os.Getwd`动态计算资源路径的方式解决了！键盘至此也就敲完了~😄，祝好~
 
+### 示例项目
 
-
-
-
-
-
-```
-
-可以看到CURL访问API接口返回的资源内容为`article 3`, 关于测试相对路径与主程序相对路径访问资源的问题也就统一了，这个问题就通过`os.Getwd`动态计算资源路径的方式解决了！键盘至此也就敲完了~😄，祝好~
-
-
-
+[hello-demo]https://github.com/wumoxi/hello-demo)
 
 
 
