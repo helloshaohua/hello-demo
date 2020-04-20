@@ -2,6 +2,7 @@ package api
 
 import (
 	"errors"
+	"hello-demo/utils"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -43,7 +44,12 @@ func (m *Markdown) GetMarkdown(ctx *gin.Context) {
 }
 
 func (m *Markdown) filepath(filename string) string {
-	return strings.Join([]string{"./static/markdown", filename}, "/")
+	pathPrefix := "./"
+	if utils.GetCurrentDir(utils.GetCurrentPath()) == utils.ApiDir {
+		pathPrefix = "./../"
+	}
+	path := strings.Join([]string{pathPrefix, "static/markdown", filename}, "/")
+	return path
 }
 
 func (m *Markdown) checkFileExists(filename string, files []string) bool {
