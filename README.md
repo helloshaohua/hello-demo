@@ -748,4 +748,4 @@ article 3
 
 ### 示例项目
 
-[hello-demo]https://github.com/wumoxi/hello-demo)
+[hello-demo](https://github.com/wumoxi/hello-demo)
