@@ -10,7 +10,7 @@ import (
 )
 
 type MarkdownHandlerInterface interface {
-	GetMarkdownByFilename(ctx *gin.Context)
+	GetMarkdown(ctx *gin.Context)
 }
 
 type Markdown struct {
